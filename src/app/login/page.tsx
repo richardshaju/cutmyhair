@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import './login.css';
+import axios from 'axios';
 
 function LoginPage() {
   const [user, setUser] = useState({
@@ -9,7 +10,7 @@ function LoginPage() {
     password: ""
   });
 
-  function handleChange(e) {
+  function handleChange(e:any) {
     const { name, value } = e.target;
     setUser(prev => ({
       ...prev,
@@ -17,13 +18,27 @@ function LoginPage() {
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e:any) {
     e.preventDefault();
     console.log(user); // Log the user state
+    try {
+      const response = await axios.post(
+        "https://cutmyhair.onrender.com/user/login",
+        {
+          password: user.password,
+          phone: user.phone,
+        }
+      );
+      localStorage.setItem("token", response.data.token);
+      console.log("Success:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+
   }
 
   return (
-    <div className="flex justify-end h-screen">
+    <div className="flex justify-end h-screen main-container">
       <div className="flex justify-center align-middle rounded-xl">
         <form className='flex flex-col justify-center p-8 formElement' onSubmit={handleSubmit}>
           <div className="bg-white p-8 rounded-xl mb-6">
