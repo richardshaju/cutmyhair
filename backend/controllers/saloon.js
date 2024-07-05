@@ -1,10 +1,10 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import user from "../models/user.js";
+import saloon from "../models/saloon.js";
 
 export const signin = async (req, res) => {
   try {
-    const response = await user.create({
+    const response = await saloon.create({
       ...req.body,
     });
 
@@ -26,7 +26,7 @@ export const login = async (req, res) => {
 
   try {
 
-    const existingUser = await user.findOne({ phone });
+    const existingUser = await saloon.findOne({ phone });
 
     if (!existingUser) {
       return res.status(404).json({ message: "User not found" });
