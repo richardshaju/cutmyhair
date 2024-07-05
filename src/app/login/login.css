@@ -1,0 +1,10 @@
+.main-container{
+    background-image: url('/img/bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.formElement{
+    background-color: rgba(255, 255, 255, 0.507);
+}

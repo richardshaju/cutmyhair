@@ -1,11 +1,11 @@
 import Image from "next/image";
+import LoginPage from "./login/page";
+import SignUpPage from "./signup/page";
 
 export default function Home() {
   return (
     <div>
-      <p className="text-5xl">
-        LANDING PAGE
-      </p>
+      <SignUpPage/>
     </div>
   );
 }
