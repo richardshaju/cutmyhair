@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import saloon from "../models/saloon.js";
+import service from '../models/service.js';
 
 export const signin = async (req, res) => {
   try {
@@ -25,7 +26,6 @@ export const login = async (req, res) => {
   const { phone, password } = req.body;
 
   try {
-
     const existingUser = await saloon.findOne({ phone });
 
     if (!existingUser) {
@@ -49,3 +49,24 @@ export const login = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
+export const addService = async (req, res) => {
+  try {
+    const response = await service.create({
+      ...req.body,
+    });
+
+    await saloon.findOneAndUpdate(
+      { _id: req.body.service },
+      { $push: { services: response._id } },
+      { new: true }
+    );
+
+    res.status(200).json({ token, response, ok: true });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+

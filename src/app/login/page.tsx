@@ -73,7 +73,7 @@ function LoginPage() {
             </div>
           </div>
           <div className="bg-white py-3 px-5 rounded-xl flex justify-between items-center">
-            <p className='text-sm cursor-pointer'>Create an account</p>
+            <a href='/signup' className='text-sm cursor-pointer'>Create an account</a>
             <button type='submit' className='border rounded-lg px-8 py-2'>Login</button>
           </div>
         </form>
