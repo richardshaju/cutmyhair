@@ -5,7 +5,7 @@ import "./login.css";
 import { Scissors } from "lucide-react";
 import { User } from 'lucide-react';
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+
 
 
 function LoginPage() {
