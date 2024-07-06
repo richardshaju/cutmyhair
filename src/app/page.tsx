@@ -1,12 +1,9 @@
-import Image from "next/image";
-import LoginPage from "./login/page";
-import SignUpPage from "./signup/page";
-import Header from "@/components/header";
+import HeroBanner from "@/components/home/heroBanner";
 
 export default function Home() {
   return (
-    <div>
-      <Header />
-    </div>
+    <>
+      <HeroBanner />
+    </>
   );
 }
