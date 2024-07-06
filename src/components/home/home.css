@@ -1,35 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
-.card-component,
-.image-container,
-.card-content{
+.card-component{
+    max-width: 340px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
     border-radius: 40px;
 }
 
-.card-component{
-    min-width: 340px;
-    position: relative;
-    height: 500px;
-    margin-bottom: 24px;
-}
-
-.image-container{
-    width: auto;
-    z-index: 999;
-}
-
-.image-container img{
-    min-height: 340px !important;
-    min-width: 410px !important;
-}
-
 .card-content{
-    position: absolute;
-    padding-top: 80px;
-    min-width: 410px;
-    height: 180px;
-    top: 275px;
-    z-index: -1;
+    width: 100%;
+    border-radius: 10px 10px 40px 40px;
 }
 
 .card-content h1{
@@ -37,3 +23,16 @@
     font-family: 'Abril Fatface';
     margin-bottom: 24px;
 }
+
+.image-container {
+    width: 100%;
+    height: 250px;
+    overflow: hidden; 
+    position: relative;
+  }
+  
+  .image-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
