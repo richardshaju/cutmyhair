@@ -1,11 +1,9 @@
 "use client";
-
 import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
 
 function LoginPage() {
- 
   const [saloon, setSaloon] = useState({
     name: "",
     phone: "",
@@ -24,7 +22,6 @@ function LoginPage() {
   }
 
   function handleFileChangeChange(e: any) {
-  
       const reader = new FileReader();
       reader.onload = () => {
 
@@ -34,7 +31,6 @@ function LoginPage() {
         }));
       };
       reader.readAsDataURL(e.target.files[0]);
- 
   }
 
   async function handleSubmit(e: any) {

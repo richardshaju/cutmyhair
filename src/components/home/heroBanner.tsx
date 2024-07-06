@@ -123,7 +123,6 @@ const HeroBanner = () => {
           {salons.map((card, index): any => (
             <div key={index} className="card-component" onClick={()=>{
               router.push(`/salon/${card?._id}`);
-
             }}>
               <div className="image-container">
                 <Image
