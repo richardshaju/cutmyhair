@@ -1,11 +1,35 @@
+"use client"
+
 import Dashboard from "@/components/dashboard/dashboard";
 import UserHome from "@/components/home/userHome";
-import HeroBanner from "@/components/home/heroBanner";
+import LandingPage from "@/components/LandingPage/LandingPage";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [user, setUser] = useState(null);
+  const [saloon, setSaloon] = useState(null);
+
+  useEffect(() => {
+    const response = JSON.parse(
+      typeof localStorage !== "undefined"
+        ? localStorage.getItem("response") || "{}"
+        : "{}"
+    );
+
+    setUser(response.user);
+    setSaloon(response.saloon);
+
+    console.log(response.user); // This will log correctly after the state is set
+  }, []);
+  
+
   return (
     <>
-      <UserHome />
+      {user && <UserHome />}
+
+      {saloon && <Dashboard />}
+
+      {!user && !saloon && <LandingPage />}
     </>
   );
 }
