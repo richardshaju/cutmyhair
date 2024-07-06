@@ -25,21 +25,6 @@ const Header = () => {
     >
       <Box
         sx={{
-          height: "45px",
-          background: "black",
-          color: "white",
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "0 10em",
-          alignItems: "center",
-        }}
-      >
-        <Typography sx={{ fontSize: "16px" }}>INR</Typography>
-        <span>Book now to get a whopping 10% off</span>
-        <span>India</span>
-      </Box>
-      <Box
-        sx={{
           padding: "0 120px",
           background: "white",
         }}

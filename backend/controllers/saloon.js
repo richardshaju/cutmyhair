@@ -53,6 +53,13 @@ export const login = async (req, res) => {
 
 export const addService = async (req, res) => {
   try {
+
+    // const response = await rogiPariuksha.findOneAndUpdate(
+    //   { patient: req.body.patient },
+    //   { $set: { SDPAAnalysis: req.body.SDPAAnalysis } },
+    //   { new: true }
+    // );
+
     const response = await service.create({
       ...req.body,
     });
