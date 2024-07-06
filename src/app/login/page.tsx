@@ -37,7 +37,7 @@ function LoginPage() {
   }
 
   return (
-    <div className="flex justify-end h-screen">
+    <div className="flex justify-end h-screen main-container">
       <div className="flex justify-center align-middle rounded-xl">
         <form
           className="flex flex-col justify-center p-8 formElement"
