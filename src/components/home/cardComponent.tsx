@@ -39,7 +39,7 @@ const CardComponent = () => {
               layout="responsive" 
             />
           </div>
-          <div className="bg-black text-white text-center p-8 card-content flex justify-between flex-col">
+          <div className="bg-black text-white text-center pt-8 card-content flex flex-col pb-10">
             <h1 className="saloon-heading text-xl">{card.heading}</h1>
             <div className="flex gap-3 justify-center">
             <MapPin />

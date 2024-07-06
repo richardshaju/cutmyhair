@@ -5,6 +5,7 @@ import "./login.css";
 import axios from "axios";
 
 function LoginPage() {
+ 
   const [saloon, setSaloon] = useState({
     name: "",
     phone: "",
@@ -23,7 +24,6 @@ function LoginPage() {
   }
 
   function handleFileChangeChange(e: any) {
-    console.log(e.target.files,'lllllllllllllll')
   
       const reader = new FileReader();
       reader.onload = () => {
@@ -39,17 +39,11 @@ function LoginPage() {
 
   async function handleSubmit(e: any) {
     e.preventDefault();
-    // const formdata= new FormData()
-    // formdata.append("name", saloon.name);
-    // formdata.append("password", saloon.password);
-    // formdata.append("phone", saloon.phone);
-    // formdata.append("bio", saloon.bio);
-    // formdata.append("location", saloon.location);
-    // formdata.append("image", saloon.image);
-    // console.log(saloon); // Log the user state
+
     try {
       const response = await axios.post(
         "https://cutmyhair.onrender.com/saloon/signin",
+        // "http://localhost:3000/saloon/reservation",
         {
           name: saloon.name,
           password: saloon.password,
@@ -166,8 +160,6 @@ function LoginPage() {
                 name="image"
                 id="file"
                 className="rounded bg-neutral-100 shadow-md h-10 pl-2 text-sm"
-                // placeholder="********"
-                // value={saloon.image}
                 onChange={handleFileChangeChange}
               />
             </div>

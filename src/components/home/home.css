@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
 .card-component,
 .image-container,
 .card-content{
@@ -7,6 +9,8 @@
 .card-component{
     min-width: 340px;
     position: relative;
+    height: 500px;
+    margin-bottom: 24px;
 }
 
 .image-container{
@@ -23,7 +27,7 @@
     position: absolute;
     padding-top: 80px;
     min-width: 410px;
-    height: 220px;
+    height: 180px;
     top: 275px;
     z-index: -1;
 }
@@ -31,4 +35,5 @@
 .card-content h1{
     font-size: 22px;
     font-family: 'Abril Fatface';
+    margin-bottom: 24px;
 }

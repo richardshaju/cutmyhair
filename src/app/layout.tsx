@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import { usePathname } from "next/navigation";
 import { Box } from "@mui/material";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
