@@ -23,7 +23,6 @@ function Dashboard() {
     title: "",
     desc: "",
     price: "",
-    image: "",
   });
 
   const handleChange = (
@@ -38,22 +37,21 @@ function Dashboard() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     console.log(formData);
-    
+
     e.preventDefault();
-    fetch(`https://cutmyhair.onrender.com/saloon/addService`, {
+    fetch(`http://localhost:8000/saloon/addService`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     })
-      .then((res) => res.json())
       .then((data) => {
-        if (data.status === 403) {
-          toast({ title: "Server Error", variant: "destructive" });
+        if (data.ok) {
+          toast({ title: "Service Added", variant: "default" });
           return;
         } else {
-          toast({ title: "Service Added", variant: "default" });
+          toast({ title: "Server Error", variant: "destructive" });
         }
       })
       .catch((error) => {
@@ -61,22 +59,16 @@ function Dashboard() {
       });
   };
 
-  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files ? e.target.files[0] : null;
+  function handleFileChangeChange(e: any) {
     const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setFormData({
-        ...formData,
-        image: reader.result as string,
-      });
+    reader.onload = () => {
+      setFormData((prev) => ({
+        ...prev,
+        [e.target.name]: reader.result,
+      }));
     };
-
-    if (file) {
-        reader.readAsDataURL(file);
-      }
- 
-  };
+    reader.readAsDataURL(e.target.files[0]);
+  }
   return (
     <div>
       <div>
@@ -137,9 +129,9 @@ function Dashboard() {
                     </Label>
                     <Input
                       id="image"
-                      value={formData.image}
+                      name="image"
                       type="file"
-                      onChange={handleAvatarChange}
+                      onChange={handleFileChangeChange}
                       placeholder="867"
                       className="col-span-6"
                     />

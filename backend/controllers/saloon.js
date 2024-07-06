@@ -61,8 +61,7 @@ export const addService = async (req, res) => {
       { $push: { services: response._id } },
       { new: true }
     );
-
-    res.status(200).json({ token, response, ok: true });
+    res.status(200).json({ response, ok: true });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });
