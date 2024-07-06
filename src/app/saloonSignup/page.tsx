@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import './signup.css';
+import './login.css';
 import axios from 'axios';
 
 function LoginPage() {
@@ -42,7 +42,7 @@ function LoginPage() {
   }
 
   return (
-    <div className="flex justify-end h-screen bg-black main-container">
+    <div className="flex justify-end h-screen bg-black main-container-2">
       <div className="flex justify-center align-middle rounded-xl">
         <form className='flex flex-col justify-center p-8 formElement' onSubmit={handleSubmit}>
           <div className="bg-white p-8 rounded-xl mb-6">
@@ -100,10 +100,6 @@ function LoginPage() {
                 onChange={handleChange}
               />
             </div>
-          </div>
-          <div className="bg-white py-3 px-5 rounded-xl flex justify-between items-center">
-            <a href='/login' className='text-sm cursor-pointer'>Already have an Account?</a>
-            <button type='submit' className='border rounded-lg px-8 py-2'>Sign Up</button>
           </div>
         </form>
       </div>
