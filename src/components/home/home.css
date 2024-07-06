@@ -1,0 +1,34 @@
+.card-component,
+.image-container,
+.card-content{
+    border-radius: 40px;
+}
+
+.card-component{
+    min-width: 340px;
+    position: relative;
+}
+
+.image-container{
+    width: auto;
+    z-index: 999;
+}
+
+.image-container img{
+    min-height: 340px !important;
+    min-width: 410px !important;
+}
+
+.card-content{
+    position: absolute;
+    padding-top: 80px;
+    min-width: 410px;
+    height: 220px;
+    top: 275px;
+    z-index: -1;
+}
+
+.card-content h1{
+    font-size: 22px;
+    font-family: 'Abril Fatface';
+}
