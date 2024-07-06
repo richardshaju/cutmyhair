@@ -37,11 +37,10 @@ function Dashboard() {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(formData);
-
+ 
     const body = {
-      services: JSON.stringify(formData),
-      _id: data?._id
+      services: formData,
+      _id: data.response._id
     };
 
     e.preventDefault();
@@ -52,8 +51,9 @@ function Dashboard() {
       },
       body: JSON.stringify(body)
     })
-      .then((data) => {
-        if (data.ok) {
+      .then(async (data) => {
+        const res = await data.json();          
+        if (res.ok) {
           toast({ title: "Service Added", variant: "default" });
           return;
         } else {
