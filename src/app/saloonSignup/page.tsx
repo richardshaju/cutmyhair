@@ -42,8 +42,7 @@ function LoginPage() {
 
     try {
       const response = await axios.post(
-        // "https://cutmyhair.onrender.com/saloon/signin",
-        "http://localhost:8000/saloon/signup",
+        "https://cutmyhair.onrender.com/saloon/signup",
         {
           name: saloon.name,
           password: saloon.password,
@@ -54,7 +53,7 @@ function LoginPage() {
         }
         // formdata
       );
-      localStorage.setItem("token", response.data);
+      localStorage.setItem("response", JSON.stringify(response.data));
 
       console.log("Success:", response.data);
     } catch (error) {

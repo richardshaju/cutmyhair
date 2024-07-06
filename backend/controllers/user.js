@@ -14,7 +14,7 @@ export const signin = async (req, res) => {
       "test",
       { expiresIn: "1h" }
     );
-    res.status(200).json({ token, response, ok: true });
+    res.status(200).json({ token, response, ok: true, user: true});
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });
@@ -41,7 +41,7 @@ export const login = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ result: existingUser, token, ok:true });
+    res.status(200).json({ result: existingUser, token, ok:true, user:true });
   } catch (error) {
     // Log any errors for debugging
     console.log("Error during login: ", error);
@@ -55,7 +55,6 @@ export const getSelectedSaloon=async(req,res)=>{
     const response = await saloon.findOne({
      _id:req.body.saloonId
     });
-console.log(response,'respppppppppppp')
     // const result = await service.findOne({
     //   _id:response.id
     //  });
