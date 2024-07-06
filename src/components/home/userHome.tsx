@@ -1,9 +1,10 @@
 import React from 'react'
+import BasicDateCalendar from '@/app/salon/slots/SaloonSlots'
 
 function UserHome() {
   return (
     <div>
-        fskfnmkf
+        <BasicDateCalendar/>
     </div>
   )
 }
