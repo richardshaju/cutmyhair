@@ -6,7 +6,7 @@ import { MapPin } from "lucide-react";
 import axios from "axios";
 
 const CardComponent = () => {
-  const [salons, setSalons] = useState([]);
+  const [salons, setSalons] = useState<{ image: string; name: string; location: string }[]>([]);
 
   useEffect(() => {
     axios
