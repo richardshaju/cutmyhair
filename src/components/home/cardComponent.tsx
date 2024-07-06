@@ -20,40 +20,17 @@ const CardComponent = () => {
       });
   }, []);
 
-  console.log(salons, "salons");
-
-  const cards = [
-    {
-      src: "/img/image19.png",
-      alt: "MARLON MCDONALD",
-      heading: "MARLON MCDONALD",
-      address: "Address",
-    },
-    {
-      src: "/img/image19.png",
-      alt: "MARLON MCDONALD",
-      heading: "MARLON MCDONALD",
-      address: "Address",
-    },
-    {
-      src: "/img/image19.png",
-      alt: "MARLON MCDONALD",
-      heading: "MARLON MCDONALD",
-      address: "Address",
-    },
-  ];
-
   return (
     <div className="w-full flex justify-center">
       <div className="p-6 flex gap-8">
         {salons.map((card, index): any => (
           <div key={index} className="card-component">
             <div className="image-container">
-              <Image
-                src={card?.image}
+            <Image
+                src={card.image?card.image:'/img/image19.png'}
                 alt="Image of a saloon"
-                width={10}
-                height={10}
+                width={120}
+                height={150}
                 layout="responsive"
               />
             </div>
