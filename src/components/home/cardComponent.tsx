@@ -4,6 +4,7 @@ import Image from "next/image";
 import "./home.css";
 import { MapPin } from "lucide-react";
 import axios from "axios";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const CardComponent = () => {
   const [salons, setSalons] = useState<{ image: string; name: string; location: string }[]>([]);
@@ -23,7 +24,7 @@ const CardComponent = () => {
   return (
     <div className="w-full flex justify-center">
       <div className="p-6 flex gap-8">
-        {salons.map((card, index): any => (
+        {salons.length>0 ? (salons.map((card, index): any => (
           <div key={index} className="card-component">
             <div className="image-container">
             <Image
@@ -42,7 +43,25 @@ const CardComponent = () => {
               </div>
             </div>
           </div>
-        ))}
+        ))):(
+          <div className="flex gap-6">
+            <div>
+            <Skeleton className="w-[300px] h-[20px] rounded-full mb-3"/>
+            <Skeleton className="w-[70px] h-[70px] rounded-full mb-3"/>
+            <Skeleton className="w-[300px] h-[100px] rounded-xl mb-3"/>
+            </div>
+            <div>
+            <Skeleton className="w-[300px] h-[20px] rounded-full mb-3"/>
+            <Skeleton className="w-[70px] h-[70px] rounded-full mb-3"/>
+            <Skeleton className="w-[300px] h-[100px] rounded-xl mb-3"/>
+            </div>
+            <div>
+            <Skeleton className="w-[300px] h-[20px] rounded-full mb-3"/>
+            <Skeleton className="w-[70px] h-[70px] rounded-full mb-3"/>
+            <Skeleton className="w-[300px] h-[100px] rounded-xl mb-3"/>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
