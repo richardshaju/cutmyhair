@@ -4,7 +4,7 @@ import saloon from "../models/saloon.js";
 import service from '../models/service.js';
 import reservation from '../models/reservation.js';
 
-export const signin = async (req, res) => {
+export const signup = async (req, res) => {
   try {
     const response = await saloon.create({
       ...req.body,
