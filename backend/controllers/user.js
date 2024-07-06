@@ -1,3 +1,4 @@
+import saloon from "../models/saloon.js";
 import user from "../models/user.js";
 import jwt from "jsonwebtoken";
 
@@ -47,3 +48,21 @@ export const login = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
+
+export const getSelectedSaloon=async(req,res)=>{
+  try {
+    const response = await saloon.findOne({
+     _id:req.body.saloonId
+    });
+console.log(response,'respppppppppppp')
+    // const result = await service.findOne({
+    //   _id:response.id
+    //  });
+    //  console.log(result,'response')
+    res.status(200).json({result:response});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+}

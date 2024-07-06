@@ -1,9 +1,9 @@
 import express from "express";
-import { addService, bookReservation, getReservation, getSaloons, login, signin } from "../controllers/saloon.js";
+import { addService, bookReservation, getReservation, getSaloons, login, signup } from "../controllers/saloon.js";
 
 const router = express.Router();
 
-router.post("/signin", signin)
+router.post("/signup", signup)
 router.post("/login", login)
 router.post("/addService", addService)
 

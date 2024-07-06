@@ -42,8 +42,8 @@ function LoginPage() {
 
     try {
       const response = await axios.post(
-        "https://cutmyhair.onrender.com/saloon/signin",
-        // "http://localhost:3000/saloon/reservation",
+        // "https://cutmyhair.onrender.com/saloon/signin",
+        "http://localhost:8000/saloon/signup",
         {
           name: saloon.name,
           password: saloon.password,
