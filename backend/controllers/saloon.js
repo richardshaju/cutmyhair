@@ -87,10 +87,20 @@ export const bookReservation= async (req, res) => {
 export const getReservation= async (req, res) => {
   try {
     const response = await reservation.find({
-      salonId:req.params.id
+      _id:req.body.id
     });
     console.log(response,'responseeeeeeeee')
 
+    res.status(200).json({result:response});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+export const getSaloons = async (req, res) => {
+  try {
+    const response = await saloon.find({});
     res.status(200).json({result:response});
   } catch (error) {
     console.log(error);
