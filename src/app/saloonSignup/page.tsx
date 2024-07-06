@@ -99,7 +99,7 @@ function LoginPage() {
                 id="phone"
                 className="rounded bg-neutral-100 shadow-md h-10 pl-2 text-sm"
                 placeholder="98745215235"
-                value={user.phone}
+                value={saloon.phone}
                 onChange={handleChange}
               />
             </div>
@@ -113,7 +113,7 @@ function LoginPage() {
                 id="password"
                 className="rounded bg-neutral-100 shadow-md h-10 pl-2 text-sm"
                 placeholder="********"
-                value={user.password}
+                value={saloon.password}
                 onChange={handleChange}
               />
             </div>

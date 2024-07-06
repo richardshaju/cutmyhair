@@ -1,9 +1,9 @@
-import HeroBanner from "@/components/home/heroBanner";
+import Dashboard from "@/components/dashboard/dashboard";
 
 export default function Home() {
   return (
     <>
-      <HeroBanner />
+      <Dashboard />
     </>
   );
 }
