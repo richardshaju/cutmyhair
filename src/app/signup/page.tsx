@@ -33,7 +33,7 @@ function LoginPage() {
             gender: user.gender
           }
         );
-        localStorage.setItem('token', response.data);
+        localStorage.setItem('data', response.data);
         
         console.log("Success:", response.data);
       } catch (error) {

@@ -4,7 +4,7 @@ import saloon from "../models/saloon.js";
 import service from '../models/service.js';
 import reservation from '../models/reservation.js';
 
-export const signin = async (req, res) => {
+export const signup = async (req, res) => {
   try {
     const response = await saloon.create({
       ...req.body,
@@ -43,7 +43,7 @@ export const login = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ result: existingUser, token, ok:true });
+    res.status(200).json({ result: existingUser, token, ok:true ,isSaloon:true});
   } catch (error) {
     // Log any errors for debugging
     console.log("Error during login: ", error);
@@ -62,7 +62,8 @@ export const addService = async (req, res) => {
       { $push: { services: response._id } },
       { new: true }
     );
-    res.status(200).json({ response, ok: true });
+
+    res.status(200).json({ token, response, ok: true });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });
@@ -87,10 +88,20 @@ export const bookReservation= async (req, res) => {
 export const getReservation= async (req, res) => {
   try {
     const response = await reservation.find({
-      salonId:req.params.id
+      _id:req.body.id
     });
     console.log(response,'responseeeeeeeee')
 
+    res.status(200).json({result:response});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+export const getSaloons = async (req, res) => {
+  try {
+    const response = await saloon.find({});
     res.status(200).json({result:response});
   } catch (error) {
     console.log(error);

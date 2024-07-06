@@ -5,8 +5,11 @@ import "./login.css";
 import { Scissors } from "lucide-react";
 import { User } from 'lucide-react';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginPage() {
+  // const navigate= useNavigate()
   const [isSaloon, setIsSaloon] = useState(false);
   const [user, setUser] = useState({
     phone: "",
@@ -35,6 +38,8 @@ function LoginPage() {
         }
       );
       localStorage.setItem("token", response.data);
+      location.href = '/'
+  
       console.log("Success:", response.data);
     } catch (error) {
       console.error("Error:", error);
