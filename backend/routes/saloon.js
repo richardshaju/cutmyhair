@@ -1,5 +1,5 @@
 import express from "express";
-import { addService, bookReservation, getReservation, getSaloons, login, signup } from "../controllers/saloon.js";
+import { addService, bookReservation, getReservation, getSaloons, getServices, login, signup } from "../controllers/saloon.js";
 
 const router = express.Router();
 
@@ -11,6 +11,7 @@ router.post("/reservation", bookReservation)
 router.get("/reservation", getReservation)
 
 router.get("/getSaloons", getSaloons)
+router.post("/getServices", getServices)
 
 
 export default router

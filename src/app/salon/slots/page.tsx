@@ -5,7 +5,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 const TimeSlots = () => {
-  const [timeSlots, setTimeSlots] = useState([]);
+  const [timeSlots, setTimeSlots] = useState<Date[]>([]);
 
   useEffect(() => {
     const generateTimeSlots = () => {
@@ -21,7 +21,7 @@ const TimeSlots = () => {
     setTimeSlots(generateTimeSlots());
   }, []);
 
-  const formatTime = (date) => {
+  const formatTime = (date: Date) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const ampm = hours >= 12 ? 'PM' : 'AM';

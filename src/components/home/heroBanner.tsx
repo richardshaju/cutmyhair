@@ -20,8 +20,15 @@ const backgroundImageStyle = {
 };
 
 const HeroBanner = () => {
-  const [salonList, setSalonList] = useState([]);
-  const [salons, setSalons] = useState([]);
+  interface Salon {
+    _id: string;
+    location: string;
+    image: string; // Add the 'image' property
+    name: string; // Add the 'name' property
+  }
+  
+  const [salonList, setSalonList] = useState<Salon[]>([]);
+  const [salons, setSalons] = useState<Salon[]>([]);
   const [value, setValue] = useState("");
   const router = useRouter();
 
@@ -32,8 +39,8 @@ const HeroBanner = () => {
     if (searchTerm === "") {
       setSalons(salonList);
     } else {
-      const filtered = salonList?.filter((salon) =>
-        salon?.location?.toLowerCase().includes(searchTerm)
+      const filtered = salonList?.filter((saloon) =>
+        saloon?.location?.toLowerCase().includes(searchTerm)
       );
       setSalons(filtered);
     }
