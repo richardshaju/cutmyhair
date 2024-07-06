@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import saloon from "../models/saloon.js";
-import service from '../models/service.js';
 import reservation from '../models/reservation.js';
 
 export const signup = async (req, res) => {
@@ -15,7 +14,7 @@ export const signup = async (req, res) => {
       "test",
       { expiresIn: "1h" }
     );
-    res.status(200).json({ token, response, ok: true });
+    res.status(200).json({ token, response, ok: true, saloon: true});
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });
@@ -38,12 +37,12 @@ export const login = async (req, res) => {
 
     // Generate a JWT token
     const token = jwt.sign(
-      { phone: existingUser.phone, id: existingUser._id },
+      { phone: existingUser.phone, id: existingUser._id ,},
       "test", 
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ result: existingUser, token, ok:true ,isSaloon:true});
+    res.status(200).json({ existingUser, token, ok:true ,isSaloon:true});
   } catch (error) {
     // Log any errors for debugging
     console.log("Error during login: ", error);

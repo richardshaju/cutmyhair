@@ -3,10 +3,8 @@
 import React, { useState } from "react";
 import "./login.css";
 import { Scissors } from "lucide-react";
-import { User } from 'lucide-react';
+import { User } from "lucide-react";
 import axios from "axios";
-
-
 
 function LoginPage() {
   // const navigate= useNavigate()
@@ -28,18 +26,17 @@ function LoginPage() {
     e.preventDefault();
     console.log(user); // Log the user state
     try {
-      const response =  await axios.post(isSaloon?  "http://localhost:5000/saloon/login"
-        :
-        // "https://cutmyhair.onrender.com/user/login",
-        "http://localhost:5000/user/login",
+      const response = await axios.post(
+        "https://cutmyhair.onrender.com/user/login",
+
         {
           password: user.password,
           phone: user.phone,
         }
       );
-      localStorage.setItem("token", response.data);
-      location.href = '/'
-  
+      localStorage.setItem("response", JSON.stringify(response.data));
+      location.href = "/";
+
       console.log("Success:", response.data);
     } catch (error) {
       console.error("Error:", error);
