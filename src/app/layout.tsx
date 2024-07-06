@@ -25,8 +25,8 @@ export default function RootLayout({
         {!noHeaderRoutes.includes(pathname) && <Header />} 
         <Box
             sx={{
-              marginTop:!noHeaderRoutes.includes(pathname) ? "100px" : "0",
-              minHeight: "89.4vh",
+              // marginTop:!noHeaderRoutes.includes(pathname) ? "100px" : "0",
+              // minHeight: "89.4vh",
             }}
           >
             {children}
