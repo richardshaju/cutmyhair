@@ -20,26 +20,25 @@ function LoginPage() {
     }));
   }
 
-  async function handleSubmit(e:any) {
+ async function handleSubmit(e:any) {
     e.preventDefault();
     console.log(user); // Log the user state
-    try {
-      const response = await axios.post(
-        "https://cutmyhair.onrender.com/user/signin",
-        {
-        name: user.name,
-          password: user.password,
-          phone: user.phone,
-          gender: user.gender
-        }
-      );
-      localStorage.setItem('token', response.data.token);
-      
-      console.log("Success:", response.data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-
+      try {
+        const response = await axios.post(
+          "https://cutmyhair.onrender.com/user/signin",
+          {
+          name: user.name,
+            password: user.password,
+            phone: user.phone,
+            gender: user.gender
+          }
+        );
+        localStorage.setItem('token', response.data.token);
+        
+        console.log("Success:", response.data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
   }
 
   return (
