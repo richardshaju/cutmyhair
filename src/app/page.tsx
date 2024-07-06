@@ -21,7 +21,7 @@ export default function Home() {
 
     console.log(response.user); // This will log correctly after the state is set
   }, []);
-  
+    
 
   return (
     <>
