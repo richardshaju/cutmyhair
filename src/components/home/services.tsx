@@ -54,7 +54,7 @@ const Services = () => {
                                 layout="responsive" 
                                 />
                         </div>
-                        <div className="cardHeading">
+                        <div className="cardHeading">  
                             {card.name}
                         </div>
                     </div>
