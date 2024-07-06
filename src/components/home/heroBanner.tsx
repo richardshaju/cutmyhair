@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../../public/img/CutMYHAIR.png";
 import SearchIcon from "@mui/icons-material/Search";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -19,8 +19,8 @@ const backgroundImageStyle = {
 };
 
 const HeroBanner = () => {
-  const [salonList, setSalonList] = useState([]);
-  const [salons, setSalons] = useState([]);
+  const [salonList, setSalonList] = useState<{ location: string }[]>([]);
+  const [salons, setSalons] = useState<{ location: string }[]>([]);
   const [value, setValue] = useState("");
   const router = useRouter();
 
@@ -34,8 +34,8 @@ const HeroBanner = () => {
     if (searchTerm === "") {
       setSalons(salonList);
     } else {
-      const filtered = salonList?.filter((salon) =>
-        salon?.location?.toLowerCase().includes(searchTerm)
+      const filtered = salonList?.filter((saloon) =>
+        saloon?.location?.toLowerCase().includes(searchTerm)
       );
       setSalons(filtered);
     }
