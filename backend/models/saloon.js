@@ -8,6 +8,7 @@ const saloonSchema = mongoose.Schema({
   location: { type: String, required: true },
   image: { type: String, required: true },
   services: [{ type: mongoose.Schema.Types.ObjectId, ref: 'service' }],
+  reservation: [{ type: mongoose.Schema.Types.ObjectId, ref: 'reservation' }],
 });
 
 export default mongoose.model("saloon", saloonSchema);

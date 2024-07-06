@@ -5,6 +5,7 @@ import "./login.css";
 import axios from "axios";
 
 function LoginPage() {
+ 
   const [saloon, setSaloon] = useState({
     name: "",
     phone: "",
@@ -50,6 +51,7 @@ function LoginPage() {
     try {
       const response = await axios.post(
         "https://cutmyhair.onrender.com/saloon/signin",
+        // "http://localhost:3000/saloon/reservation",
         {
           name: saloon.name,
           password: saloon.password,
