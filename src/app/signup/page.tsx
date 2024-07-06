@@ -33,7 +33,7 @@ function LoginPage() {
             gender: user.gender
           }
         );
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data);
         
         console.log("Success:", response.data);
       } catch (error) {
@@ -47,7 +47,7 @@ function LoginPage() {
         <form className='flex flex-col justify-center p-8 formElement' onSubmit={handleSubmit}>
           <div className="bg-white p-8 rounded-xl mb-6">
             <div className="mb-5">
-              <p className='text-blue-600 font-semibold text-sm'>Welcome back!</p>
+              <p className='text-blue-600 font-semibold text-sm'>Welcome to Cut My Hair</p>
               <h1 className="font-bold text-3xl mb-2">Login</h1>
               <p className='text-sm'>Enter your credentials to login for using the dashboard</p>
             </div>

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -20,17 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {" "}
-        <>
-        {!noHeaderRoutes.includes(pathname) && <Header />} 
-        <Box
-            sx={{
-              marginTop: pathname === "/" ? "100px" : "75px",
-              minHeight: "89.4vh",
-            }}
-          >
-            {children}
-          </Box>
-        </> 
+        <>{children}</>
       </body>
     </html>
   );
