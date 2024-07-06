@@ -7,6 +7,7 @@ import { Box, InputAdornment, TextField } from "@mui/material";
 import axios from "axios";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const backgroundImageStyle = {
   backgroundImage: `url(${Logo.src})`,
@@ -22,6 +23,8 @@ const HeroBanner = () => {
   const [salonList, setSalonList] = useState([]);
   const [salons, setSalons] = useState([]);
   const [value, setValue] = useState("");
+  const router = useRouter();
+
 
   
 
@@ -121,7 +124,10 @@ const HeroBanner = () => {
       <div className="w-full flex justify-center">
         <div className="p-6 flex gap-8">
           {salons.map((card, index): any => (
-            <div key={index} className="card-component">
+            <div key={index} className="card-component" onClick={()=>{
+              router.push(`/salon/${card?._id}`);
+
+            }}>
               <div className="image-container">
                 <Image
                   src={card?.image}
