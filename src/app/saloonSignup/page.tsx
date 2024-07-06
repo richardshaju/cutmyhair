@@ -5,6 +5,7 @@ import "./login.css";
 import axios from "axios";
 
 function LoginPage() {
+ 
   const [saloon, setSaloon] = useState({
     name: "",
     phone: "",
@@ -22,12 +23,27 @@ function LoginPage() {
     }));
   }
 
+  function handleFileChangeChange(e: any) {
+  
+      const reader = new FileReader();
+      reader.onload = () => {
+
+        setSaloon((prev) => ({
+          ...prev,
+          [e.target.name]: reader.result,
+        }));
+      };
+      reader.readAsDataURL(e.target.files[0]);
+ 
+  }
+
   async function handleSubmit(e: any) {
     e.preventDefault();
-    console.log(saloon); // Log the user state
+
     try {
       const response = await axios.post(
         "https://cutmyhair.onrender.com/saloon/signin",
+        // "http://localhost:3000/saloon/reservation",
         {
           name: saloon.name,
           password: saloon.password,
@@ -36,6 +52,7 @@ function LoginPage() {
           location: saloon.location,
           image: saloon.image,
         }
+        // formdata
       );
       localStorage.setItem("token", response.data);
 
@@ -57,7 +74,7 @@ function LoginPage() {
               <p className="text-blue-600 font-semibold text-sm">
                 Welcome to Cut My Hair
               </p>
-              <h1 className="font-bold text-3xl mb-2">Login</h1>
+              <h1 className="font-bold text-3xl mb-2">Signup</h1>
               <p className="text-sm">
                 Enter your credentials to login for using the dashboard
               </p>
@@ -99,7 +116,7 @@ function LoginPage() {
                 id="phone"
                 className="rounded bg-neutral-100 shadow-md h-10 pl-2 text-sm"
                 placeholder="98745215235"
-                value={user.phone}
+                value={saloon.phone}
                 onChange={handleChange}
               />
             </div>
@@ -113,10 +130,46 @@ function LoginPage() {
                 id="password"
                 className="rounded bg-neutral-100 shadow-md h-10 pl-2 text-sm"
                 placeholder="********"
-                value={user.password}
+                value={saloon.password}
                 onChange={handleChange}
               />
             </div>
+
+            <div className="flex flex-col mb-2 gap-2">
+              <label htmlFor="password" className="text-sm">
+                Location
+              </label>
+              <input
+                type="text"
+                name="location"
+                id="location"
+                className="rounded bg-neutral-100 shadow-md h-10 pl-2 text-sm"
+                placeholder="Aluva"
+                value={saloon.location}
+                onChange={handleChange}
+              />
+            </div>
+
+
+            <div className="flex flex-col mb-2 gap-2">
+              <label htmlFor="password" className="text-sm">
+                Image
+              </label>
+              <input
+                type="file"
+                name="image"
+                id="file"
+                className="rounded bg-neutral-100 shadow-md h-10 pl-2 text-sm"
+                onChange={handleFileChangeChange}
+              />
+            </div>
+
+
+            <div className="bg-white py-3 px-5 rounded-xl flex justify-between items-center">
+            <a href='/login' className='text-sm cursor-pointer'>Already have an Account?</a>
+            <button type='submit' className='border rounded-lg px-8 py-2'>Sign Up</button>
+          </div>
+
           </div>
         </form>
       </div>
