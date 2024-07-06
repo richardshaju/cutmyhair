@@ -4,13 +4,11 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import Logo from "../../public/img/LOGO.png";
 import CartIcon from "../../public/img/CartIcon.png";
-
 import Image from "next/image";
 import { TabButton } from "./header.style";
 
 const Header = () => {
   const router = useRouter();
-
   return (
     <AppBar
       sx={{
