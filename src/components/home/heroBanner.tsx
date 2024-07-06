@@ -20,8 +20,15 @@ const backgroundImageStyle = {
 };
 
 const HeroBanner = () => {
-  const [salonList, setSalonList] = useState<{ location: string }[]>([]);
-  const [salons, setSalons] = useState<{ location: string }[]>([]);
+  interface Salon {
+    _id: string;
+    location: string;
+    image: string; // Add the 'image' property
+    name: string; // Add the 'name' property
+  }
+  
+  const [salonList, setSalonList] = useState<Salon[]>([]);
+  const [salons, setSalons] = useState<Salon[]>([]);
   const [value, setValue] = useState("");
   const router = useRouter();
 
