@@ -1,0 +1,68 @@
+.serviceContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 48px 0;
+}
+
+.serviceContainer h1{
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 64px;
+    margin-bottom: 16px;
+}
+
+.serviceContainer p{
+    font-size: 20px;
+    color: #979797;
+
+}
+
+.serviceHeader{
+    margin-bottom: 40px;
+}
+
+.showAllBtn{
+    height: 50px;
+    width: 194px;
+    border: 2px solid black;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 64px;
+}
+
+.showAllBtn:hover{
+    background-color: black;
+    color: white;
+}
+
+.service-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px 16px; 
+    margin-bottom: 24px
+}
+
+.service-list > * {
+    flex: 0 0 calc((100% - (3 - 1) * 16px) / 3); /* Adjusting width for 3 columns with a 16px gap */
+    box-sizing: border-box; /* To ensure padding and borders are included in the element's total width and height */
+}
+
+.servicecard-component{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 16px;
+    height: 220px;
+}
+
+.serviceImageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
