@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import saloon from "../models/saloon.js";
 import service from '../models/service.js';
+import reservation from '../models/reservation.js';
 
 export const signin = async (req, res) => {
   try {
@@ -62,6 +63,35 @@ export const addService = async (req, res) => {
       { new: true }
     );
     res.status(200).json({ response, ok: true });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+
+export const bookReservation= async (req, res) => {
+  try {
+    const response = await reservation.create({
+      ...req.body,
+    });
+
+    res.status(200).json({msg:'Reservation Successfull'});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+
+export const getReservation= async (req, res) => {
+  try {
+    const response = await reservation.find({
+      salonId:req.params.id
+    });
+    console.log(response,'responseeeeeeeee')
+
+    res.status(200).json({result:response});
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });

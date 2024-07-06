@@ -25,8 +25,10 @@ function LoginPage() {
     e.preventDefault();
     console.log(user); // Log the user state
     try {
-      const response = await axios.post(
-        "https://cutmyhair.onrender.com/user/login",
+      const response =  await axios.post(isSaloon?  "http://localhost:5000/saloon/login"
+        :
+        // "https://cutmyhair.onrender.com/user/login",
+        "http://localhost:5000/user/login",
         {
           password: user.password,
           phone: user.phone,
