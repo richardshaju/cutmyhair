@@ -105,19 +105,18 @@ export const bookReservation = async (req, res) => {
       ...req.body,
     });
 
-    res.status(200).json({ msg: "Reservation Successfull" });
+    res.status(200).json({ msg: "Reservation Successfull", ok:true });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });
   }
 };
 
-export const getReservation = async (req, res) => {
+export const getServiceReservation = async (req, res) => {
   try {
     const response = await reservation.find({
-      _id: req.body.id,
+      serviceId: req.body.id,
     });
-    console.log(response, "responseeeeeeeee");
 
     res.status(200).json({ result: response });
   } catch (error) {
@@ -154,7 +153,6 @@ export const getParticularService = async (req, res) => {
   console.log(saloonId, serviceId, "saloonId, serviceId");
     const response = await saloon.findOne({_id:saloonId});
 
-    console.log(response, "responseeeeeeeee");  
     const result = response.services.find((service) => service._id == serviceId);
     console.log(serviceId);
     res.status(200).json({ result: result });

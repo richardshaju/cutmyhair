@@ -1,5 +1,5 @@
 import express from "express";
-import { addService, bookReservation, getParticularService, getReservation, getSaloons, getServices, login, signup } from "../controllers/saloon.js";
+import { addService, bookReservation, getParticularService, getServiceReservation, getSaloons, getServices, login, signup } from "../controllers/saloon.js";
 
 const router = express.Router();
 
@@ -8,7 +8,7 @@ router.post("/login", login)
 router.post("/addService", addService)
 
 router.post("/reservation", bookReservation)
-router.get("/reservation", getReservation)
+router.get("/getServiceReservation", getServiceReservation)
 
 router.get("/getSaloons", getSaloons)
 router.post("/getServices", getServices)
