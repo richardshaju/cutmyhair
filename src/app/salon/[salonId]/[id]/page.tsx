@@ -55,17 +55,17 @@ const TimeSlots = () => {
     const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState('');
 
-  const handleDateChange = (date) => {
+  const handleDateChange = (date:any) => {
     setSelectedDate(date);
     setSelectedTime(''); // Reset time when date changes
   };
 
 
-  const handleTimeChange = (e) => {
+  const handleTimeChange = (e:any) => {
     setSelectedTime(e.target.value);
   };
 
-  const isTimeBooked = (date, time) => {
+  const isTimeBooked = (date:any, time:any) => {
     return bookings.some(
       (booking) =>
         booking.date === date.toISOString().split('T')[0] &&
