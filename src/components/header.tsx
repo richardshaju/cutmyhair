@@ -9,6 +9,8 @@ import { TabButton } from "./header.style";
 
 const Header = () => {
   const router = useRouter();
+  const isLogged = localStorage.getItem("response");
+
   return (
     <AppBar
       sx={{
@@ -44,9 +46,7 @@ const Header = () => {
               gap: "10px",
             }}
           >
-            <Box
-            sx={{display:"flex",gap:"40px"}}
-            >
+            <Box sx={{ display: "flex", gap: "40px" }}>
               <Image
                 width={100}
                 height={100}
@@ -58,14 +58,14 @@ const Header = () => {
               <TabButton>aboutus</TabButton>
             </Box>
           </Box>
-          <Box sx={{display:"flex",gap:"28px",alignItems:"center"}}>
-          <Image
-                width={30}
-                height={30}
-                src={CartIcon}
-                alt="LOGO IMG"
-                style={{ width: "20px" ,height:"20px" }}
-              />{" "}
+          <Box sx={{ display: "flex", gap: "28px", alignItems: "center" }}>
+            <Image
+              width={30}
+              height={30}
+              src={CartIcon}
+              alt="LOGO IMG"
+              style={{ width: "20px", height: "20px" }}
+            />{" "}
             <Button
               sx={{
                 width: { xs: "61px", sm: "90px", lg: "132px" },
@@ -74,10 +74,14 @@ const Header = () => {
                 color: "black",
               }}
               onClick={() => {
-                router.push("/login");
+                if (isLogged) {
+                  localStorage.removeItem("response");
+                } else {
+                  router.push("/login");
+                }
               }}
             >
-              Login
+              {isLogged ? "Logout" : "Login"}
             </Button>
           </Box>
         </Toolbar>
