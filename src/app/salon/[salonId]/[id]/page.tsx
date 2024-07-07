@@ -5,7 +5,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { usePathname } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
-import UserBooking from "@/app/bookings/page";
 import Image from "next/image";
 
 const TimeSlots = () => {
