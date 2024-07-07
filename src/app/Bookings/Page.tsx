@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-function Page() {
+function Bookings() {
   interface User {
     _id: string;
     // Add other properties if needed
@@ -81,4 +81,4 @@ function Page() {
     </div>
   );
 }
-export default Page;
+export default Bookings;
