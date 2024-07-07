@@ -47,7 +47,7 @@ const Header = () => {
             }}
           >
             <Box sx={{ display: "flex", gap: "40px" }}>
-              <h3 className="text-black font-semibold text-xl">CUT MY HAIR</h3>
+              <a href="/"><h3 className="text-black font-semibold text-xl">CUT MY HAIR</h3></a>
 
             </Box>
           </Box>

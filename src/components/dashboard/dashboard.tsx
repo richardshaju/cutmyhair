@@ -95,11 +95,17 @@ function Dashboard() {
       }));
     };
     reader.readAsDataURL(e.target.files[0]);
+
+
+   const data = JSON.stringify(localStorage.getItem("response"))
   }
   return (
-    <div>
-      <div>
-        <h1>SALOON DASH</h1>
+    <div className="flex justify-start flex-col">
+      <div className="px-20 py-7 mx-auto flex flex-col gap-2 w-[40rem] ">
+        <img src={data.existingUser?.image} alt="profile" width={200} className="rounded-full" height={200}/>
+      <h1 className="text-3xl font-semibold">{data.existingUser?.name}</h1>
+      <p className="text-base">{data.existingUser?.bio}</p>
+      <p>{data.existingUser?.location}</p>
       </div>
       <div className="flex justify-around items-center">
         <Dialog>

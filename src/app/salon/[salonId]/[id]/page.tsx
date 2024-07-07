@@ -6,6 +6,7 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { usePathname } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import UserBooking from "@/app/Bookings/Page";
+import Image from "next/image";
 
 const TimeSlots = () => {
   const [timeSlots, setTimeSlots] = useState<Date[]>([]);
@@ -41,7 +42,7 @@ const TimeSlots = () => {
     })
       .then(async (data) => {
         const res = await data.json();
-        SetService(res.data);
+        SetService(res);
       })
       .catch((error) => {
         console.error(error);
@@ -123,16 +124,42 @@ const TimeSlots = () => {
         console.error(error);
       });
   }, []);
-
+  console.log(service);
+  
   return (
     <div className="p-5">
-      <div className="text-center mb-5">
-        <h1 className="font-bold text-6xl mb-4">Booking Appointment</h1>
-        <p className="text-gray-400 text-2xl">Book smarter, not harder</p>
-      </div>
       <div className="flex justify-center">
         <div className="w-[700px]">
-          <UserBooking />
+          <div className="my-16">
+            <div className="flex flex-col justify-center items-center serviceHeader">
+              <h1 className="font-bold text-[56px] mb-4">User Bookings</h1>
+              <p className="text-gray-400 text-[20px]">
+                Book smarter, not harder
+              </p>
+            </div>
+            <div className="flex justify-center align-middle mb">
+              <div className="timeslots w-[1000px] flex justify-between gap-4 border py-2 px-4 rounded-lg">
+                <div className="flex ">
+                  <Image
+                    src={service?.result.data?.image}
+                    height={150}
+                    width={100}
+                    alt="service heading"
+                  />
+                </div>
+                <div className="flex flex-col justify-around w-full px-4 gap-4">
+                  <h1 className="text-[24px]">{service?.result.data?.title}</h1>
+                  <p className="text-[16px]">{service?.result.data?.desc}</p>
+                </div>
+                <div className="flex flex-col justify-around px-4 gap-4">
+                  <p className="text-center">{service?.result.data?.price}</p>
+                  <button className="py-2 px-4 border bg-red-600 text-white hover:bg-red-500 rounded">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="flex justify-center">
