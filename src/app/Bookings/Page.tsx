@@ -7,7 +7,7 @@ const UserBooking = (props:any) => {
   console.log(props);
   
   return (
-    
+    "add"
   )
 }
 export default UserBooking

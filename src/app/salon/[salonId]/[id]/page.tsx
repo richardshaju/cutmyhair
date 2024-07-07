@@ -197,8 +197,8 @@ const TimeSlots = () => {
             )}
           </div>
           <div>
+          <p>Date: {datevalue ? datevalue : ""}</p>
             <p>Time: {selectedTime ? selectedTime.toString() : ""}</p>
-            <p>Date: {datevalue ? datevalue : ""}</p>
           </div>
           <div className="flex justify-center">
             <button
