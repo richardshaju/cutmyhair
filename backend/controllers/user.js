@@ -1,9 +1,10 @@
+import reservation from "../models/reservation.js";
 import saloon from "../models/saloon.js";
 import user from "../models/user.js";
 import jwt from "jsonwebtoken";
 
 export const signin = async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   try {
     const response = await user.create({
       ...req.body,
@@ -14,7 +15,7 @@ export const signin = async (req, res) => {
       "test",
       { expiresIn: "1h" }
     );
-    res.status(200).json({ token, response, ok: true, user: true});
+    res.status(200).json({ token, response, ok: true, user: true });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });
@@ -22,7 +23,7 @@ export const signin = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  const {phone, password} = req.body;
+  const { phone, password } = req.body;
 
   try {
     const existingUser = await user.findOne({ phone });
@@ -30,18 +31,18 @@ export const login = async (req, res) => {
     if (!existingUser) {
       return res.status(404).json({ message: "User not found" });
     }
-    if (password !=  existingUser.password) {
+    if (password != existingUser.password) {
       return res.status(400).json({ message: "Invalid password" });
     }
 
     // Generate a JWT token
     const token = jwt.sign(
       { phone: existingUser.phone, id: existingUser._id },
-      "test", 
+      "test",
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ result: existingUser, token, ok:true, user:true });
+    res.status(200).json({ result: existingUser, token, ok: true, user: true });
   } catch (error) {
     // Log any errors for debugging
     console.log("Error during login: ", error);
@@ -49,19 +50,40 @@ export const login = async (req, res) => {
   }
 };
 
-
-export const getSelectedSaloon=async(req,res)=>{
+export const getSelectedSaloon = async (req, res) => {
   try {
     const response = await saloon.findOne({
-     _id:req.body.saloonId
+      _id: req.body.saloonId,
     });
     // const result = await service.findOne({
     //   _id:response.id
     //  });
     //  console.log(result,'response')
-    res.status(200).json({result:response});
+    res.status(200).json({ result: response });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });
   }
-}
+};
+
+export const getBookings = async (req, res) => {
+  try {
+    const { _id } = req.body;
+
+    const response = await reservation.find({ userId: _id });
+    if (!response) {
+      return res.status(404).json({ message: "Reservation not found" });
+    }
+
+    // console.log(response.saloonId);
+    // const saloonResponse = await saloon.findOne({ _id: response.saloonId });
+    // if (!saloonResponse) {
+    //   return res.status(404).json({ message: "Saloon not found" });
+    // }
+
+    res.status(200).json({ response });
+  } catch (error) {
+    console.error("Error fetching bookings:", error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};

@@ -9,7 +9,8 @@ import { TabButton } from "./header.style";
 
 const Header = () => {
   const router = useRouter();
-  const isLogged = typeof window !== 'undefined' ? localStorage.getItem("response") : null;
+  const isLogged =
+    typeof window !== "undefined" ? localStorage.getItem("response") : null;
 
   return (
     <AppBar
@@ -47,11 +48,25 @@ const Header = () => {
             }}
           >
             <Box sx={{ display: "flex", gap: "40px" }}>
-              <a href="/"><h3 className="text-black font-semibold text-xl">CUT MY HAIR</h3></a>
-
+              <a href="/">
+                <h3 className="text-black font-semibold text-xl">
+                  CUT MY HAIR
+                </h3>
+              </a>
             </Box>
           </Box>
-          <Box sx={{ display: "flex", gap: "28px", alignItems: "center" }}> 
+          <Box sx={{ display: "flex", gap: "28px", alignItems: "center" }}>
+            <Button
+              sx={{
+                width: { xs: "61px", sm: "90px", lg: "132px" },
+                height: "40px",
+                borderRadius: "20px",
+                color: "black",
+              }}
+              onClick={() => {
+                location.href = "/bookings";
+              }}
+            >Bookings</Button>
             <Button
               sx={{
                 width: { xs: "61px", sm: "90px", lg: "132px" },

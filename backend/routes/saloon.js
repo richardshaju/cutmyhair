@@ -15,4 +15,7 @@ router.post("/getServiceReservation", getServiceReservation)
 router.get("/getSaloons", getSaloons)
 router.post("/getServices", getServices)
 router.post("/getParticularService", getParticularService)
+
+
+
 export default router
