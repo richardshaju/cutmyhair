@@ -31,7 +31,7 @@ const TimeSlots = () => {
   };
 
   return (
-    <div className="p-5">
+    <div className="p-5 flex flex-col items-center mb-32">
       <div className="text-center mb-5">
         <h1 className="font-bold text-6xl mb-4">Saloons</h1>
         <p className="text-gray-400 text-2xl">Book smarter, not harder</p>
@@ -57,6 +57,7 @@ const TimeSlots = () => {
           </div>
         </div>
       </div>
+      <button className='py-2 px-5 border border-black rounded-md bg-white cursor-pointer transition duration-300 ease-in-out hover:bg-black hover:text-white'>Submit</button>
     </div>
   );
 };
