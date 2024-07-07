@@ -56,7 +56,7 @@ const Page = () => {
       <h1 className="text-4xl text-center">Your Bookings</h1>
       <div className="p-14">
         <div>
-          {data ? (
+          {data.length != 0 ? (
             data?.map((booking: any) => (
               <div key={booking._id} className="flex justify-between p-4">
                 <div>
