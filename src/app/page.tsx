@@ -17,7 +17,7 @@ export default function Home() {
     );
 
     setUser(response.user);
-    setSaloon(response.saloon);
+    setSaloon(response.isSaloon);
 
     console.log(response.user); // This will log correctly after the state is set
   }, []);

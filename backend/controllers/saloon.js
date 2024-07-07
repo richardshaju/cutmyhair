@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import saloon from "../models/saloon.js";
 import reservation from "../models/reservation.js";
+import mongoose from "mongoose";
 
 export const signup = async (req, res) => {
   try {
@@ -53,15 +54,41 @@ export const addService = async (req, res) => {
   try {
     const { _id, services } = req.body;
 
+    // Debug: Log the request body
+    console.log('Request body:', req.body);
+
+    // Ensure _id is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+      return res.status(400).json({ message: 'Invalid saloon ID' });
+    }
+
+    // Ensure services is an array
+    if (!Array.isArray(services) || services.length === 0) {
+      return res.status(400).json({ message: 'Services should be a non-empty array' });
+    }
+
+    // Debug: Log the _id and services
+    console.log('Saloon ID:', _id);
+    console.log('Services to add:', services);
+
     const response = await saloon.findOneAndUpdate(
       { _id: _id },
-      { $push: { services: services } },
+      { $push: { services: { $each: services } } },
       { new: true }
     );
-    res.status(200).json({ response, ok: true });
+
+    if (!response) {
+      return res.status(404).json({ message: 'Saloon not found' });
+    }
+
+    // Debug: Log the updated response
+    console.log('Updated saloon:', response);
+
+    res.status(200).json(response);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Something went wrong" });
+    // Debug: Log the error
+    console.error('Error adding service:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
 

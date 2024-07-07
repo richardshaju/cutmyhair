@@ -36,14 +36,15 @@ function Dashboard() {
     });
   };
 
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
  
+    e.preventDefault();
     const body = {
       services: formData,
-      _id: data.response._id
+      _id: data.existingUser._id
     };
 
-    e.preventDefault();
     fetch(`http://localhost:8000/saloon/addService`, {
       method: "POST",
       headers: {
