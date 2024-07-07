@@ -2,7 +2,6 @@
 import { Box, styled } from '@mui/material'
 import React from 'react'
 import HeroBanner from './heroBanner';
-import TimeSlots from '@/app/salon/slots/TimeSlots';
 
  const HeadTitle = styled(Box)(({ theme }) => ({
   display: "flex",

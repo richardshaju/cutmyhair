@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-const UserBooking = () => {
+const UserBooking = (props:any) => {
   return (
     <div className="my-16">
         <div className="flex flex-col justify-center items-center serviceHeader">
