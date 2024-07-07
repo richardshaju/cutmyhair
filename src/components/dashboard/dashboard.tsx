@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button } from "../ui/button";
 import {
@@ -45,7 +45,7 @@ function Dashboard() {
       _id: data.existingUser._id
     };
 
-    fetch(`http://localhost:8000/saloon/addService`, {
+      fetch(`https://cutmyhair.onrender.com/saloon/addService`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,6 +65,26 @@ function Dashboard() {
         console.error(error);
       });
   };
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/saloon/getReservation`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(async (data) => {
+        const res = await data.json();           
+       console.log(res.result);
+       
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+  })
+
+
 
   function handleFileChangeChange(e: any) {
     const reader = new FileReader();

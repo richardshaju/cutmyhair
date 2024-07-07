@@ -2,7 +2,7 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import { useRouter } from "next/navigation";
-import Logo from "../../public/img/LOGO.png";
+import Logo from "../../public/img/logo.jpg";
 import CartIcon from "../../public/img/CartIcon.png";
 import Image from "next/image";
 import { TabButton } from "./header.style";
@@ -47,25 +47,11 @@ const Header = () => {
             }}
           >
             <Box sx={{ display: "flex", gap: "40px" }}>
-              <Image
-                width={100}
-                height={100}
-                src={Logo}
-                alt="LOGO IMG"
-                style={{ width: "65px" }}
-              />{" "}
-              <TabButton>services</TabButton>
-              <TabButton>aboutus</TabButton>
+              <h3 className="text-black font-semibold text-xl">CUT MY HAIR</h3>
+
             </Box>
           </Box>
-          <Box sx={{ display: "flex", gap: "28px", alignItems: "center" }}>
-            <Image
-              width={30}
-              height={30}
-              src={CartIcon}
-              alt="LOGO IMG"
-              style={{ width: "20px", height: "20px" }}
-            />{" "}
+          <Box sx={{ display: "flex", gap: "28px", alignItems: "center" }}> 
             <Button
               sx={{
                 width: { xs: "61px", sm: "90px", lg: "132px" },
@@ -77,7 +63,7 @@ const Header = () => {
                 if (isLogged) {
                   localStorage.removeItem("response");
                 } else {
-                  router.push("/login");
+                  location.href = "/login";
                 }
               }}
             >

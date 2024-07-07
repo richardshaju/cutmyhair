@@ -16,7 +16,7 @@ const backgroundImageStyle = {
   backgroundPosition: "center",
   position: "relative",
   width: "100%",
-  height: "500px",
+  height: "200px",
 };
 
 const HeroBanner = () => {
@@ -67,10 +67,9 @@ const HeroBanner = () => {
       <Box sx={backgroundImageStyle}>
         <Box
           sx={{
-            position: "absolute",
+
             bottom: 0,
-            left: "50%",
-            transform: "translateX(-50%)",
+          
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -86,6 +85,7 @@ const HeroBanner = () => {
             sx={{
               width: "565px",
               height: "45px",
+  
               borderRadius: "50px",
               padding: "0",
               "& .MuiOutlinedInput-root": {
@@ -121,13 +121,12 @@ const HeroBanner = () => {
               marginLeft: "25px",
             }}
           >
-            <LocationOnIcon sx={{ mr: 1 }} />
-            <span>Detect my location</span>
+
           </Box>
         </Box>
       </Box>
       <div className="w-full flex justify-center">
-        <div className="p-6 flex gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {salons.map((card, index): any => (
             <div
               key={index}

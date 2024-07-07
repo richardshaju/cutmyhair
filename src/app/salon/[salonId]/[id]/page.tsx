@@ -9,9 +9,12 @@ import UserBooking from "@/app/Bookings/Page";
 
 const TimeSlots = () => {
   const [timeSlots, setTimeSlots] = useState<Date[]>([]);
-  const [selectedTime, setSelectedTime] = useState<String | undefined>(undefined);
+  const [selectedTime, setSelectedTime] = useState<String | undefined>(
+    undefined
+  );
   const [selectedDate, setSelectedDate] = useState<any>(null);
-  const [service, SetService] =useState<any>(null);
+
+  const [service, SetService] = useState<any>(null);
   const toast = useToast();
   const pathname = usePathname();
   const user = JSON.parse(localStorage.getItem("response") || "{}");
@@ -39,7 +42,8 @@ const TimeSlots = () => {
       .then(async (data) => {
         const res = await data.json();
         SetService(res.data);
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.error(error);
       });
   }, []);
@@ -110,9 +114,9 @@ const TimeSlots = () => {
         const res = await data.json();
         if (res.ok) {
           console.log(res);
+
           return;
         } else {
-          // handle error
         }
       })
       .catch((error) => {
@@ -127,10 +131,21 @@ const TimeSlots = () => {
         <p className="text-gray-400 text-2xl">Book smarter, not harder</p>
       </div>
       <div className="flex justify-center">
-        <form onSubmit={handleSubmit} className="flex justify-center mt-14 flex-col">
+        <div className="w-[700px]">
+          <UserBooking />
+        </div>
+      </div>
+      <div className="flex justify-center">
+        <form
+          onSubmit={handleSubmit}
+          className="flex justify-center mt-14 flex-col"
+        >
           <div className="flex gap-8 justify-between w-[900px]">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DateCalendar className="m-0" onChange={(date) => setSelectedDate(date)} />
+              <DateCalendar
+                className="m-0"
+                onChange={(date) => setSelectedDate(date)}
+              />
             </LocalizationProvider>
             {selectedDate && (
               <div className="grid grid-cols-2 gap-4">
@@ -140,7 +155,9 @@ const TimeSlots = () => {
                       key={index}
                       onClick={() => setSelectedTime(formatTime(slot))}
                       className={`text-black py-2 px-5 border border-black rounded-md cursor-pointer transition duration-300 ease-in-out hover:bg-black hover:text-white ${
-                        selectedTime === formatTime(slot) ? "bg-black text-white" : "bg-white"
+                        selectedTime === formatTime(slot)
+                          ? "bg-black text-white"
+                          : "bg-white"
                       }`}
                     >
                       {formatTime(slot)}
@@ -157,11 +174,12 @@ const TimeSlots = () => {
             <p>Time: {selectedTime ? selectedTime.toString() : ""}</p>
           </div>
           <div className="flex justify-center">
-          <button
-            type="submit"
-            className="py-2 px-5 bg-green-600 w-[150px] rounded"
-            disabled={!selectedDate || !selectedTime}
-          >BOOK</button>
+            <button
+              type="submit"
+              className="py-2 px-5 bg-green-600 w-[150px] rounded"
+            >
+              BOOK
+            </button>
           </div>
         </form>
       </div>
