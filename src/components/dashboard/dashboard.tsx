@@ -18,6 +18,7 @@ import { useToast } from "../ui/use-toast";
 import { Textarea } from "../ui/textarea";
 
 function Dashboard() {
+  const data = JSON.parse(localStorage.getItem('response') || '{}');
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     title: "",
@@ -35,19 +36,25 @@ function Dashboard() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(formData);
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+ 
     e.preventDefault();
+    const body = {
+      services: formData,
+      _id: data.existingUser._id
+    };
+
     fetch(`http://localhost:8000/saloon/addService`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(body)
     })
-      .then((data) => {
-        if (data.ok) {
+      .then(async (data) => {
+        const res = await data.json();          
+        if (res.ok) {
           toast({ title: "Service Added", variant: "default" });
           return;
         } else {

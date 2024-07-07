@@ -43,6 +43,26 @@ function LoginPage() {
     }
   }
 
+  async function handleSubmitForSaloon(e: any) {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://cutmyhair.onrender.com/saloon/login",
+
+        {
+          password: user.password,
+          phone: user.phone,
+        }
+      );
+      localStorage.setItem("response", JSON.stringify(response.data));
+      location.href = "/";
+
+      console.log("Success:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+
   return (
     <>
       {!isSaloon ? (
@@ -117,7 +137,7 @@ function LoginPage() {
           <div className="flex justify-center align-middle rounded-xl">
             <form
               className="flex flex-col justify-center p-8 formElement"
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmitForSaloon}
             >
               <div className="bg-white p-8 rounded-xl mb-6">
                 <div className="mb-5">

@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
 
+
+const serviceSchema = new mongoose.Schema({
+  _id: { type: mongoose.Schema.Types.ObjectId, default: mongoose.Types.ObjectId },
+  data: {type:mongoose.Schema.Types.Mixed},
+});
+
 const saloonSchema = mongoose.Schema({
   name: { type: String, required: true },
   bio: { type: String, required: true },
@@ -7,7 +13,7 @@ const saloonSchema = mongoose.Schema({
   password: { type: String, required: true },
   location: { type: String, required: true },
   image: { type: String, required: true },
-  services: [{ type: mongoose.Schema.Types.ObjectId, ref: 'service' }],
+  services: [serviceSchema],
   reservation: [{ type: mongoose.Schema.Types.ObjectId, ref: 'reservation' }],
 });
 

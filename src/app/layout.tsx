@@ -14,7 +14,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
+  const pathname = usePathname(); 
   const noHeaderRoutes = ["/signup", "/login"];
 
   return (
@@ -30,6 +30,7 @@ export default function RootLayout({
             }}
           >
             {children}
+            <Toaster />
           </Box>
         </> 
       </body>

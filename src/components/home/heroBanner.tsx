@@ -20,20 +20,28 @@ const backgroundImageStyle = {
 };
 
 const HeroBanner = () => {
-  const [salonList, setSalonList] = useState([]);
-  const [salons, setSalons] = useState([]);
+  interface Salon {
+    _id: string;
+    location: string;
+    image: string; // Add the 'image' property
+    name: string; // Add the 'name' property
+  }
+
+  const [salonList, setSalonList] = useState<Salon[]>([]);
+  const [salons, setSalons] = useState<Salon[]>([]);
   const [value, setValue] = useState("");
   const router = useRouter();
+  const isLogged = localStorage.getItem("response");
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     const searchTerm = e.target.value.toLowerCase();
     setValue(searchTerm);
 
     if (searchTerm === "") {
       setSalons(salonList);
     } else {
-      const filtered = salonList?.filter((salon) =>
-        salon?.location?.toLowerCase().includes(searchTerm)
+      const filtered = salonList?.filter((saloon) =>
+        saloon?.location?.toLowerCase().includes(searchTerm)
       );
       setSalons(filtered);
     }
@@ -121,10 +129,17 @@ const HeroBanner = () => {
       <div className="w-full flex justify-center">
         <div className="p-6 flex gap-8">
           {salons.map((card, index): any => (
-            <div key={index} className="card-component" onClick={()=>{
-              router.push(`/salon/${card?._id}`);
-
-            }}>
+            <div
+              key={index}
+              className="card-component"
+              onClick={() => {
+                if (isLogged) {
+                  router.push(`/salon/${card?._id}`);
+                } else {
+                  router.push("/login");
+                }
+              }}
+            >
               <div className="image-container">
                 <Image
                   src={card?.image}
