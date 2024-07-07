@@ -127,11 +127,6 @@ const TimeSlots = () => {
         <p className="text-gray-400 text-2xl">Book smarter, not harder</p>
       </div>
       <div className="flex justify-center">
-      <div className="w-[700px]">
-          <UserBooking/>
-      </div>
-      </div>
-      <div className="flex justify-center">
         <form onSubmit={handleSubmit} className="flex justify-center mt-14 flex-col">
           <div className="flex gap-8 justify-between w-[900px]">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -158,11 +153,15 @@ const TimeSlots = () => {
             )}
           </div>
           <div>
+          <p>Date: {datevalue ? datevalue : ""}</p>
             <p>Time: {selectedTime ? selectedTime.toString() : ""}</p>
-            <p>Date: {datevalue ? datevalue : ""}</p>
           </div>
           <div className="flex justify-center">
-          <button type="submit" className="py-2 px-5 bg-green-600 w-[150px] rounded">BOOK</button>
+          <button
+            type="submit"
+            className="py-2 px-5 bg-green-600 w-[150px] rounded"
+            disabled={!selectedDate || !selectedTime}
+          >BOOK</button>
           </div>
         </form>
       </div>
