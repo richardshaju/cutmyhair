@@ -50,6 +50,7 @@ export const login = async (req, res) => {
   }
 };
 
+
 export const addService = async (req, res) => {
   try {
     const { _id, services } = req.body;
@@ -62,35 +63,41 @@ export const addService = async (req, res) => {
       return res.status(400).json({ message: 'Invalid saloon ID' });
     }
 
-    // Ensure services is an array
-    if (!Array.isArray(services) || services.length === 0) {
-      return res.status(400).json({ message: 'Services should be a non-empty array' });
+    // Ensure services is an object and has the necessary fields
+    if (typeof services !== 'object' || services === null) {
+      return res.status(400).json({ message: 'Services should be a valid object' });
     }
 
-    // Debug: Log the _id and services
-    console.log('Saloon ID:', _id);
-    console.log('Services to add:', services);
+    // Create a new service object based on the serviceSchema
+    const newService = {
+      _id: new mongoose.Types.ObjectId(),
+      data: services,
+    };
 
-    const response = await saloon.findOneAndUpdate(
-      { _id: _id },
-      { $push: { services: { $each: services } } },
-      { new: true }
+    // Debug: Log the new service object
+    console.log('New Service Object:', newService);
+
+    const response = await saloon.findByIdAndUpdate(
+      _id,
+      { $push: { services: newService } },
+      { new: true, runValidators: true }
     );
 
     if (!response) {
       return res.status(404).json({ message: 'Saloon not found' });
     }
 
-    // Debug: Log the updated response
+    // Debug: Log the updated saloon
     console.log('Updated saloon:', response);
 
-    res.status(200).json(response);
+    res.status(200).json({response, ok:true});
   } catch (error) {
     // Debug: Log the error
     console.error('Error adding service:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
 
 export const bookReservation = async (req, res) => {
   try {
@@ -136,6 +143,21 @@ export const getServices = async (req, res) => {
     const response = await saloon.findOne({_id:_id});
 
     res.status(200).json({ result: response });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+export const getParticularService = async (req, res) => {
+  try {
+    const {saloonId, serviceId } = req.body;
+  console.log(saloonId, serviceId, "saloonId, serviceId");
+    const response = await saloon.findOne({_id:saloonId});
+
+    console.log(response, "responseeeeeeeee");  
+    const result = response.services.find((service) => service._id == serviceId);
+    console.log(serviceId);
+    res.status(200).json({ result: result });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong" });

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const serviceSchema = new mongoose.Schema({
   _id: { type: mongoose.Schema.Types.ObjectId, default: mongoose.Types.ObjectId },
-  type: mongoose.Schema.Types.Mixed,
+  data: {type:mongoose.Schema.Types.Mixed},
 });
 
 const saloonSchema = mongoose.Schema({

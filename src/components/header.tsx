@@ -9,7 +9,7 @@ import { TabButton } from "./header.style";
 
 const Header = () => {
   const router = useRouter();
-  const isLogged = localStorage.getItem("response");
+  const isLogged = typeof window !== 'undefined' ? localStorage.getItem("response") : null;
 
   return (
     <AppBar
