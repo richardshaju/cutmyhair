@@ -8,7 +8,7 @@ router.post("/login", login)
 router.post("/addService", addService)
 
 router.post("/reservation", bookReservation)
-router.get("/getServiceReservation", getServiceReservation)
+router.post("/getServiceReservation", getServiceReservation)
 
 router.get("/getSaloons", getSaloons)
 router.post("/getServices", getServices)

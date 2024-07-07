@@ -12,6 +12,9 @@ const TimeSlots = () => {
     undefined
   );
   const [selectedDate, setSelectedDate] = useState<any>();
+
+  const [reservation, setReservation] = useState()
+
   var datevalue: any;
   const toast = useToast();
   const pathname = usePathname();
@@ -115,12 +118,11 @@ const TimeSlots = () => {
     })
       .then(async (data) => {
         const res = await data.json();
-        if (res.ok) {
-          console.log(res);
+        const array = res.result;
 
-          return;
-        } else {
-        }
+        const result = array.map(({ date, time }:any) => ({ date, time }));
+        setReservation(result)
+      
       })
       .catch((error) => {
         console.error(error);

@@ -114,8 +114,9 @@ export const bookReservation = async (req, res) => {
 
 export const getServiceReservation = async (req, res) => {
   try {
+    
     const response = await reservation.find({
-      serviceId: req.body.id,
+      serviceId: req.body.serviceId,
     });
 
     res.status(200).json({ result: response });
@@ -150,11 +151,10 @@ export const getServices = async (req, res) => {
 export const getParticularService = async (req, res) => {
   try {
     const {saloonId, serviceId } = req.body;
-  console.log(saloonId, serviceId, "saloonId, serviceId");
+  
     const response = await saloon.findOne({_id:saloonId});
-
     const result = response.services.find((service) => service._id == serviceId);
-    console.log(serviceId);
+
     res.status(200).json({ result: result });
   } catch (error) {
     console.log(error);
